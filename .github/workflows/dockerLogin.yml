@@ -10,7 +10,5 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Build the Docker image
-        run: docker build ./go --file go/batch.Dockerfile --tag filecan.xyz:5432/fc-batch
       - name: Docker Login
         run: docker login filecan.xyz:5432 -u ${{ secrets.DOCKER_REGISTRY_USERNAME }} -p ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
