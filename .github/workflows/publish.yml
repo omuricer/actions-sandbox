@@ -1,0 +1,17 @@
+name: タグを公開したときにCDする
+
+
+on:
+  release:
+    types:
+    - published
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Docker Login
+        run: docker login filecan.xyz:5432 -u ${{ secrets.DOCKER_REGISTRY_USERNAME }} -p ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
