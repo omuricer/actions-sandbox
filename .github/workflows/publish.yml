@@ -13,5 +13,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Docker Login
-        run: docker login filecan.xyz:5432 -u ${{ secrets.DOCKER_REGISTRY_USERNAME }} -p ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+      - name: Set version
+        id: version
+        run: |
+          echo "::set-env name=NAME::${GITHUB_REF#refs/*/}"
+          echo "::set-env name=BRANCH::${GITHUB_REF#refs/heads/}"
+          echo "::set-env name=TAG::${GITHUB_REF#refs/tags/}"
+      - name: Reffer env
+        run: |
+          echo $NAME
+          echo $BRANCH
+          echo $TAG
