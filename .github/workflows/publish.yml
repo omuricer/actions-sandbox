@@ -1,26 +1,26 @@
-name: タグを公開したときにCDする
+# name: タグを公開したときにCDする
 
 
-on:
-  release:
-    types:
-    - published
+# on:
+#   release:
+#     types:
+#     - published
 
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set version
-        id: version
-        run: |
-          echo "NAME=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-          echo "BRANCH=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
-          echo "TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
-      - name: Reffer env
-        run: |
-          echo $NAME
-          echo $BRANCH
-          echo $TAG
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Set version
+#         id: version
+#         run: |
+#           echo "NAME=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+#           echo "BRANCH=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+#           echo "TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+#       - name: Reffer env
+#         run: |
+#           echo $NAME
+#           echo $BRANCH
+#           echo $TAG
